@@ -6,7 +6,7 @@ const Footer = () => {
     const thisYear = new Date().getFullYear();
     return (
         <div className="footer">
-        <Row className="justify-content-center mb-2">
+        <Row className="justfy-content-center mb-2">
             <Col md="auto">
                 {/* 나중에 로그 들어갈 자리 */}
                 <h6> 🏠 집보장 </h6>
@@ -22,12 +22,12 @@ const Footer = () => {
             </Col>
         </Row>
 
-        <Row className = "justify-content-center mb-2">
+        {/**<Row className = "justify-content-center mb-2">
             <Col md ="auto">
                 이메일 : parksoyo134@sookmyung.ac.kr | 예린언니메일 
             </Col>
         </Row>
-
+        **/}
         <Row className="justify-content-center mb-2">
             <Col md="auto">
                 <p>
@@ -38,11 +38,9 @@ const Footer = () => {
                 >
                 <img src = {githubLogo} alt ="Github" className="github-icon"/>
                 </a>
-
                 </p>
             </Col>
         </Row>
-
         <Row className="justify-content-center">
             <Col md="auto">
                 <p>&copy; {new Date().getFullYear()} 집보장 (SafeHome Yes Team). All rights reserved.</p>
