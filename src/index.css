@@ -1,68 +1,42 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* 1) 기본 리셋 & 높이 */
+html, body, #root { height: 100%; }
+* { box-sizing: border-box; 
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* 2) 레이아웃 토큰(한 곳에서 통합 관리) */
+:root{
+  --header-h: 72px;                 /* 헤더 고정 높이 */
+  --container-max: 1200px;          /* 콘텐츠 최대 너비 */
+  --page-x: 16px;                   /* 기본 좌우 패딩 */
+  --z-header: 1000;
 }
 
-body {
-  margin: 0;
+/* 3) 앱 골격: 헤더 고정 + 내용 보정 + 반응형 */
+.app-shell{
+  min-height: 100dvh;
+  padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px)); /* 헤더가 내용 가리지 않게 */
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* 4) 페이지 콘텐츠 래퍼 (스크롤/확장 영역) */
+.app-content{
+  flex: 1 0 auto;
+  width: 100%;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* 5) 공용 컨테이너: 가로 전체 배경 + 내부 정렬 */
+.container{
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--page-x);
+  padding-right: var(--page-x);
+  width: 100%;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* (선택) 모바일에서 기본 패딩 살짝 줄이기 */
+@media (max-width: 480px){
+  :root{ --page-x: 12px; }
 }
