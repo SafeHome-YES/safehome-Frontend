@@ -1,0 +1,19 @@
+.alert-modal {
+    text-align: center;
+}
+
+.alert-actions {
+    margin-top: 15px;
+}
+
+.alert-btn {
+    padding: 8px 16px;
+    background-color: #4A90E2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.alert-btn:hover {
+    background-color: #357ABD;
+}
