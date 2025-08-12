@@ -11,7 +11,7 @@ const Footer = () => {
                 {/* 나중에 로그 들어갈 자리 */}
                 <h6> 🏠 집보장 </h6>
                 <p className ="footer-description">
-                    당신의 집 i, 집보장이 안전하게 보장해드립니다. <br /> {/* 멘트수정 ㄱㄴ */}
+                    당신의 집 , 집보장이 안전하게 보장해드립니다. <br /> {/* 멘트수정 ㄱㄴ */}
                     범죄 , 조도 , CCTV 기반 안전 점수로 신뢰할 수 있는 주거 정보를 제공합니다.
                 </p>
             </Col>
@@ -28,7 +28,6 @@ const Footer = () => {
             </Col>
         </Row>
         **/}
-
         <Row className="justify-content-center mb-2">
             <Col md="auto">
                 <p>
@@ -39,11 +38,9 @@ const Footer = () => {
                 >
                 <img src = {githubLogo} alt ="Github" className="github-icon"/>
                 </a>
-
                 </p>
             </Col>
         </Row>
-
         <Row className="justify-content-center">
             <Col md="auto">
                 <p>&copy; {new Date().getFullYear()} 집보장 (SafeHome Yes Team). All rights reserved.</p>
