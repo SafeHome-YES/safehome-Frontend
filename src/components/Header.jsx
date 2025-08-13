@@ -18,6 +18,7 @@ const Header = () => {
 
   return (
     <header className="header-container">
+      <div className="header-inner">
         <NavLink to="/" className="header-logo">
             <img src={logoImg} alt="SafeHome 로고" className="logo-image" />
         </NavLink>
@@ -39,7 +40,7 @@ const Header = () => {
             <NavLink to="/login" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>로그인</NavLink>
             <NavLink to="/signup" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>회원가입</NavLink>
         </nav>
-
+      </div>
     </header>
   );
 };
