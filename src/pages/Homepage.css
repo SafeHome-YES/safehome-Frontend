@@ -1,0 +1,61 @@
+/* 문구 가운데 */
+.home-wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+.home-hero { text-align: center; margin-bottom: 16px; }
+.home-title { font-size: 28px; font-weight: 800; margin: 0 0 6px; letter-spacing: -0.2px; }
+.home-sub { color: #687080; font-size: 14px; }
+
+/* 카드 한 줄 + 넘치면 줄바꿈 + 가운데 정렬 */
+.category-grid {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap; /* 넘치면 아래로 */
+}
+
+.category-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  width: 140px;
+  height: 100px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: transform .08s ease, box-shadow .08s ease, background .08s ease, border-color .08s ease;
+}
+.category-card:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(16, 24, 40, 0.08);
+}
+.category-card.selected {
+  border-color: #bfd6ff;
+  background: #f0f6ff;
+  box-shadow: 0 6px 16px rgba(16, 24, 40, 0.12);
+}
+
+.icon { width: 28px; height: 28px; border-radius: 8px; display: inline-block; }
+.icon.region  { background: #e9f1ff; }
+.icon.price   { background: #fff1e6; }
+.icon.infra   { background: #efe9fd; }
+.icon.listing { background: #e9f7ef; }
+.icon.safety  { background: #ffeef3; }
+
+.meta { display: flex; flex-direction: column; gap: 4px; }
+.label { font-size: 15px; font-weight: 600; color: #263040; }
+.sub   { font-size: 12px; color: #8a94a6; }
+
+.badge {
+  position: absolute; top: 8px; right: 8px;
+  font-size: 11px; padding: 2px 8px; border-radius: 999px;
+  background: #e8f1ff; color: #2563eb; border: 1px solid #dbe7ff;
+}
