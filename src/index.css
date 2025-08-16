@@ -22,6 +22,7 @@ html, body, #root { height: 100%; }
 .app-content{
   flex: 1 0 auto;
   width: 100%;
+  padding-top: var(--header-h);
 }
 
 /* 5) 공용 컨테이너: 가로 전체 배경 + 내부 정렬 */
