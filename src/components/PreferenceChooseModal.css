@@ -1,0 +1,17 @@
+.prefm-modal { width:100%; max-width:560px; background:#fff; border-radius:16px; box-shadow:0 12px 32px rgba(16,24,40,.16); padding:20px; }
+.prefm-header { margin-bottom:12px; }
+.prefm-title { margin:0; font-size:20px; font-weight:800; letter-spacing:-0.2px; color:#1f2937; }
+.prefm-sub { margin:6px 0 0; color:#6b7280; font-size:14px; }
+.prefm-form { display:grid; gap:16px; }
+.prefm-grid { display:grid; grid-template-columns:1fr; gap:12px; }
+@media (min-width:560px){ .prefm-grid{ grid-template-columns:1fr 1fr; } }
+.prefm-cell.full{ grid-column:1 / -1; }
+.prefm-label { font-size:13px; font-weight:600; color:#263040; margin-bottom:6px; display:inline-block; }
+.prefm-helper { font-size:12px; color:#6b7280; margin-top:4px; }
+.prefm-error{ margin:0; padding:8px 10px; font-size:13px; color:#b91c1c; background:#fef2f2; border:1px solid #fee2e2; border-radius:8px; }
+.prefm-actions{ display:flex; justify-content:flex-end; gap:10px; }
+.prefm-btn{ height:38px; padding:0 14px; font-size:14px; font-weight:600; border-radius:10px; border:1px solid transparent; cursor:pointer; }
+.prefm-btn.ghost{ background:#f3f4f6; color:#374151; border-color:#e5e7eb; }
+.prefm-btn.ghost:hover{ background:#fff; box-shadow:0 6px 14px rgba(16,24,40,.08); }
+.prefm-btn.primary{ background:#4A90E2; color:#fff; }
+.prefm-btn.primary:hover{ box-shadow:0 6px 14px rgba(16,24,40,.12); }
