@@ -11,7 +11,6 @@ export default function App() {
       <main className="app-content">
         <AppRouter />
       </main>
-      <Footer />
     </BrowserRouter>
   );
 }
