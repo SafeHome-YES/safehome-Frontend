@@ -12,5 +12,5 @@ export default function App() {
         <AppRouter />
       </main>
     </BrowserRouter>
-  );
+  )
 }

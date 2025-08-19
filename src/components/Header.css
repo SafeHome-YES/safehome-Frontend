@@ -4,7 +4,7 @@
   height: var(--header-h);
   z-index: var(--z-header);
   border-bottom: 1px solid #dee2e6;
-  background-color: #f8f9fa;
+  background-color: white;
 }
 
 .header-inner {

@@ -1,5 +1,5 @@
 /* 1) 기본 리셋 & 높이 */
-html, body, #root { height: 100%; }
+html, body, #root { height: 100%;   }
 * { box-sizing: border-box; }
 
 /* 2) 레이아웃 토큰(한 곳에서 통합 관리) */
@@ -8,6 +8,7 @@ html, body, #root { height: 100%; }
   --container-max: 1704px;          /* 콘텐츠 최대 너비 */
   --page-x: 20px;                   /* 기본 좌우 패딩 */
   --z-header: 1000;
+
 }
 
 /* 3) 앱 골격: 헤더 고정 + 내용 보정 + 반응형 */
@@ -16,6 +17,7 @@ html, body, #root { height: 100%; }
   padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px)); /* 헤더가 내용 가리지 않게 */
   display: flex;
   flex-direction: column;
+
 }
 
 /* 4) 페이지 콘텐츠 래퍼 (스크롤/확장 영역) */
@@ -24,7 +26,6 @@ html, body, #root { height: 100%; }
   width: 100%;
   padding-top: var(--header-h);
 }
-
 /* 5) 공용 컨테이너: 가로 전체 배경 + 내부 정렬 */
 .container{
   max-width: var(--container-max);
