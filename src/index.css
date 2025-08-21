@@ -1,15 +1,12 @@
 /* 1) 기본 리셋 & 높이 */
 html, body, #root { height: 100%; }
-* { box-sizing: border-box; 
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-
-}
+* { box-sizing: border-box; }
 
 /* 2) 레이아웃 토큰(한 곳에서 통합 관리) */
 :root{
-  --header-h: 72px;                 /* 헤더 고정 높이 */
-  --container-max: 1200px;          /* 콘텐츠 최대 너비 */
-  --page-x: 16px;                   /* 기본 좌우 패딩 */
+  --header-h: 95px;                /* 헤더 고정 높이 */
+  --container-max: 1704px;          /* 콘텐츠 최대 너비 */
+  --page-x: 20px;                   /* 기본 좌우 패딩 */
   --z-header: 1000;
 }
 
@@ -25,6 +22,7 @@ html, body, #root { height: 100%; }
 .app-content{
   flex: 1 0 auto;
   width: 100%;
+  padding-top: var(--header-h);
 }
 
 /* 5) 공용 컨테이너: 가로 전체 배경 + 내부 정렬 */
@@ -34,9 +32,4 @@ html, body, #root { height: 100%; }
   padding-left: var(--page-x);
   padding-right: var(--page-x);
   width: 100%;
-}
-
-/* (선택) 모바일에서 기본 패딩 살짝 줄이기 */
-@media (max-width: 480px){
-  :root{ --page-x: 12px; }
 }

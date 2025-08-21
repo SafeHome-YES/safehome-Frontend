@@ -1,7 +1,7 @@
-// src/pages/Home/HomePage.jsx
 import React, { useState } from 'react';
 import './Homepage.css';
-import PreferenceModal from '../../components/PreferenceChooseModal.jsx';
+import PreferenceModal from '../../components/PreferenceChooseModal.jsx'
+import { useNavigate } from 'react-router-dom';
 
 const CATEGORIES = [
   { key: 'region',  label: '지역',   sub: '호선 / 지역 선택' },
@@ -11,27 +11,56 @@ const CATEGORIES = [
   { key: 'safety',  label: '안전',   sub: 'CCTV · 가로등' },
 ];
 
+// 저장 키
+const FINAL_KEY = 'prefFinal_v1';    // 모달 자동 임시저장
+const DRAFT_KEY = 'prefDraft';       // 최종 저장(덮어쓰기)
 
 export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [saved, setSaved] = useState({}); // 저장된 값(선택)
+  // 카테고리별 최신 값
+  const [saved, setSaved] = useState({
+    region: {}, price: {}, infra: {}, listing: {}, safety: {}
+  });
+  
+  const navigate = useNavigate();
 
   const handleClick = (key) => {
     setActiveCategory(key);
     setIsOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = () => setIsOpen(false);
+  
+  // 모달 '저장' → 메모리(saved)에 반영
+  const handleSave = ({ category, values }) => {
+    setSaved((prev) => ({ ...prev, [category]: values || {} })); // 빈 값도 저장 OK
     setIsOpen(false);
   };
 
-  const handleSave = ({ category, values }) => {
-    // 카테고리별 저장값을 기억하고 싶다면 이렇게 보관
-    setSaved((prev) => ({ ...prev, [category]: values }));
-    // 저장 이후 모달 닫힘
-    setIsOpen(false);
-    console.log('[HomePage] onSave:', category, values);
+  // "선호도 저장" 버튼: 임시저장 + 메모리 병합 후 최종 저장 -> 메인 페이지 이동
+  const handleSaveAll = () => {
+    try {
+      const raw = localStorage.getItem(DRAFT_KEY);
+      const draft = raw ? JSON.parse(raw) : {};
+
+      // draft → saved 순으로 병합하면, 최근에 모달에서 저장한 값이 우선
+      const finalPayload = {
+        region: {}, price: {}, infra: {}, listing: {}, safety: {}, 
+        ...draft, ...saved,
+      };
+      // 최종 저장
+      localStorage.setItem(FINAL_KEY, JSON.stringify(finalPayload));
+
+      // 임시 저장 삭제
+      localStorage.removeItem(DRAFT_KEY);
+
+      // 메인 페이지로 이동
+      navigate('/main', { replace: true, state: { prefUpdated: true } });
+    } catch (e) {
+      console.error(e);
+      alert('선호도 저장 중 오류가 발생했습니다.');
+    }
   };
 
   return (
@@ -48,6 +77,7 @@ export default function HomePage() {
             type="button"
             className="category-card"
             onClick={() => handleClick(key)}
+            aria-label={`${label} 선호도 설정`}
           >
             <span className={`icon ${key}`} aria-hidden />
             <div className="meta">
@@ -58,10 +88,16 @@ export default function HomePage() {
         ))}
       </section>
 
-      {/* 모달: 카테고리를 선택했을 때만 렌더 */}
+      <div className="home-actions">
+        <button type="button" className="save-btn" onClick={handleSaveAll}>
+          선호도 저장하고 매물 보기
+        </button>
+      </div>
+
+      {/* 모달 */}
       {activeCategory && (
         <PreferenceModal
-          category={activeCategory}     // 클릭된 카테고리 키 (region/price/infra/listing/safety)
+          category={activeCategory} 
           isOpen={isOpen}
           onClose={handleClose}
           onSave={handleSave}
