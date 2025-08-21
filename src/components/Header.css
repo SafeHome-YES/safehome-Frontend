@@ -1,33 +1,45 @@
 .header-container {
-  height: 79px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 12px 20px;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  z-index: var(--z-header);
   border-bottom: 1px solid #dee2e6;
   background-color: #f8f9fa;
 }
 
-.header-logo {
-  display: inline-flex;
+.header-inner {
+  display: flex;
   align-items: center;
-  text-decoration: none;
-  padding: 12px;
+  gap: 16px;
 
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 12px 20px; 
+  padding-right: 30px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }
 .logo-image {
   display: block;
-  width: 60px; /* 로고 이미지 크기 조정 */
+  width: 60px; 
   height: auto;
+  object-fit: contain;
 }
 
 .header-search {
   display: flex;
-  align-items: center;
+  flex: 0 1 clamp(500px, 50vw, 740px);
+  width: clamp(500px, 50vw, 740px);
+  max-width: 100%;
   gap: 8px;
-  flex: 1 1 500px; 
-  max-width: min(560px, 50vw);
+  padding: 0 8px;
 }
 .search-input {
   flex: 1 1 auto;
@@ -63,36 +75,40 @@
 
 .header-nav {
   display: flex;
+  gap: 35px;
+  margin-left: auto;
   align-items: center;
-  gap: 15px;
   flex: 0 0 auto;
 }
 
 .nav-item {
   text-decoration: none;
   color: #343a40;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   padding: 6px 8px;
   border-radius: 8px;
   outline: none;
 }
+
+.nav-item:hover,
+.nav-item:focus-visible {
+  background: rgba(0, 123, 255, 0.08);
+  color: #007bff;
+  box-shadow: 0 0 0 0; 
+}
+
 .nav-item.active {
   color: #007bff;
   text-decoration: underline;
   text-underline-offset: 3px;
-}
-.nav-item:hover {
-  background: #8e3030;
-  color: #0056b3; /* 색 변경 */
+  background: transparent;
 }
 
-.nav-item:focus-visible {
-  box-shadow: 0 0 0 3px rgba(46, 125, 215, 0.2);
-}
-
-.nav-item.active {
-  color: #2e7dd7;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+/* 반응형: 좁은 화면에서 검색 영역 줄이기 */
+@media (max-width: 640px) {
+  .header-inner    { padding: 10px 12px; gap: 12px; }
+  .header-search   { flex-basis: clamp(220px, 50vw, 420px); width: auto; }
+  .search-input    { font-size: 13px; }
+  .nav-item        { font-size: 15px; padding: 6px 6px; }
 }

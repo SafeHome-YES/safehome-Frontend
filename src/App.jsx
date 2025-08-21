@@ -8,10 +8,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <Header />
-      <main>
+      <main className="app-content">
         <AppRouter />
       </main>
-      <Footer />
     </BrowserRouter>
   );
 }
